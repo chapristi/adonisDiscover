@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    
+    <form action="http://127.0.0.1:3333/posts/update/{{id}}" method="get" >
+        
+        <div>
+            <label for="name">name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="description">description</label>
+            <input type="text" id="description" name="description">
+
+        </div>
+        <div>
+          <button type="submit">envoyer</button>
+        </div>
+    </form>
+    
+</body>
+</html>
