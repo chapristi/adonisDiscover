@@ -31,3 +31,6 @@ Route.get('/posts', 'PostsController.index');
 Route.post('/posts', 'PostsController.store')
 Route.get('/posts/update/:id', 'PostsController.update')
 Route.get('/posts/show/:id', 'PostsController.show')
+
+
+Route.get('/category', 'CategoriesController.store')

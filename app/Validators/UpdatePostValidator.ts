@@ -13,6 +13,7 @@ export default class UpdatePostValidator {
                 rules.minLength(52),
                 
             ]),
+         
            
           })
         

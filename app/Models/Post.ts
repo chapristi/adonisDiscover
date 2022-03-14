@@ -17,6 +17,7 @@ export default class Post extends BaseModel {
 
   @column()
   public categoryId : number
+  
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
