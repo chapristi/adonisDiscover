@@ -19,6 +19,8 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import User from 'App/Models/User';
+import UserValidator from 'App/Validators/UserValidator';
 
 
 
@@ -34,3 +36,25 @@ Route.get('/posts/show/:id', 'PostsController.show')
 
 
 Route.get('/category', 'CategoriesController.store')
+
+
+Route.post('/login', async ({ auth, request }) => {
+  const email = request.input('email')
+  const password = request.input('password')
+
+
+  await auth.use('web').attempt(email, password) 
+
+})
+
+Route.get('/form_login', "UsersController.form_login" )
+//.middleware("auth:web,api")
+//await auth.use('web').authenticate()
+
+// ✅ Request authenticated
+//console.log(auth.user!)
+
+Route.get('/register', async ({}) => {
+  await User.create({email: 'tet@example.com',password: 'test'})
+})
+
