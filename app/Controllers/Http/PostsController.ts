@@ -1,5 +1,6 @@
+
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Category from 'App/Models/Category'
+
 import Post from 'App/Models/Post'
 
 import UpdatePostValidator from 'App/Validators/UpdatePostValidator'
@@ -46,10 +47,11 @@ export default class PostsController {
    
     
     }
-    public async update({params,request,session,response} : HttpContextContract){
+    public async update({params,request,session,response,bouncer} : HttpContextContract){
    
 
         const post : Post  = await Post.findOrFail(params.id)
+        await bouncer.with("PostPolicy").authorize("delete",post)
         post.merge( await request.validate(UpdatePostValidator)).save()
         session.flash('success',"l'article a bien été sauvegardé")
         return response.redirect().toRoute('home')
