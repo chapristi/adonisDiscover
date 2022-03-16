@@ -20,11 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import User from 'App/Models/User';
-import UserValidator from 'App/Validators/UserValidator';
+import Event from '@ioc:Adonis/Core/Event'
 
 
-
-
+ 
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
@@ -55,6 +54,10 @@ Route.get('/form_login', "UsersController.form_login" )
 //console.log(auth.user!)
 
 Route.get('/register', async ({}) => {
+
   await User.create({email: 'tet@example.com',password: 'test'})
+  //appel l'event et lui donne les infos voulu dans un object
+  Event.emit('new:user', { id: 1 })
+
 })
 
